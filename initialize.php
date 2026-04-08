@@ -1,35 +1,35 @@
 
 <?php
 ini_set('display_errors', 0);
-ini_set('display_startup_errors', 1);
+ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
 
-// Suporte a variáveis de ambiente do Railway
-if(!defined('BASE_URL')) {
-    $baseUrl = getenv('BASE_URL') ?: (getenv('RAILWAY_STATIC_URL') ? 'https://' . getenv('RAILWAY_STATIC_URL') . '/' : 'https://rifaphp.catalogodgplwdesign.com/');
-    define('BASE_URL', $baseUrl);
-}
+/*
+ * =====================================================
+ * CONFIGURAÇÃO PARA INFINITYFREE
+ * =====================================================
+ * Preencha os dados abaixo com as informações do seu
+ * banco de dados MySQL (cPanel → MySQL Databases)
+ */
+
+// URL do seu site no InfinityFree (ex: https://seusite.epizy.com/)
+if(!defined('BASE_URL')) define('BASE_URL', 'https://seusite.epizy.com/');
+
 if(!defined('BASE_APP')) define('BASE_APP', str_replace('\\','/',__DIR__).'/' );
 
-// Database - suporta variáveis Railway MySQL ou env vars personalizadas
-if(!defined('DB_SERVER')) {
-    $dbHost = getenv('MYSQLHOST') ?: getenv('DB_SERVER') ?: 'localhost';
-    define('DB_SERVER', $dbHost);
-}
-if(!defined('DB_USERNAME')) {
-    $dbUser = getenv('MYSQLUSER') ?: getenv('DB_USERNAME') ?: 'catalog4_rifa821';
-    define('DB_USERNAME', $dbUser);
-}
-if(!defined('DB_PASSWORD')) {
-    $dbPass = getenv('MYSQLPASSWORD') ?: getenv('DB_PASSWORD') ?: '#H42(xJ7]]I_';
-    define('DB_PASSWORD', $dbPass);
-}
-if(!defined('DB_NAME')) {
-    $dbName = getenv('MYSQLDATABASE') ?: getenv('DB_NAME') ?: 'catalog4_rifa821';
-    define('DB_NAME', $dbName);
-}
-if(!defined('DB_PORT')) {
-    $dbPort = getenv('MYSQLPORT') ?: '3306';
-    define('DB_PORT', $dbPort);
-}
+// DADOS DO BANCO DE DADOS - ALTERE AQUI:
+// Hostname MySQL (ex: sql123.epizy.com ou localhost)
+if(!defined('DB_SERVER')) define('DB_SERVER', 'sql123.epizy.com');
+
+// Usuário MySQL (ex: epiz_12345678_rifauser)
+if(!defined('DB_USERNAME')) define('DB_USERNAME', 'epiz_12345678_rifauser');
+
+// Senha MySQL (a senha que você criou no cPanel)
+if(!defined('DB_PASSWORD')) define('DB_PASSWORD', 'SUA_SENHA_AQUI');
+
+// Nome do banco (ex: epiz_12345678_rifadb)
+if(!defined('DB_NAME')) define('DB_NAME', 'epiz_12345678_rifadb');
+
+// Porta MySQL (geralmente 3306)
+if(!defined('DB_PORT')) define('DB_PORT', '3306');
 ?>
