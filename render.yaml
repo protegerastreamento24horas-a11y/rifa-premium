@@ -1,0 +1,61 @@
+# Render.com Blueprint para Rifa Premium
+# Use este arquivo para fazer deploy automatizado no Render
+
+services:
+  # Serviço Web (PHP + Apache)
+  - type: web
+    name: rifa-premium
+    runtime: docker
+    plan: standard
+    branch: master
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: BASE_URL
+        fromService:
+          name: rifa-premium
+          type: web
+          property: url
+      - key: DB_SERVER
+        fromService:
+          name: rifa-premium-db
+          type: pserv
+          property: host
+      - key: DB_PORT
+        fromService:
+          name: rifa-premium-db
+          type: pserv
+          property: port
+      - key: DB_USERNAME
+        fromService:
+          name: rifa-premium-db
+          type: pserv
+          property: user
+      - key: DB_PASSWORD
+        fromService:
+          name: rifa-premium-db
+          type: pserv
+          property: password
+      - key: DB_NAME
+        fromService:
+          name: rifa-premium-db
+          type: pserv
+          property: database
+    healthCheckPath: /health.php
+    autoDeploy: true
+
+  # Banco de dados MySQL
+  - type: pserv
+    name: rifa-premium-db
+    runtime: docker
+    plan: standard
+    branch: master
+    dockerfilePath: ./Dockerfile.mysql
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        generateValue: true
+      - key: MYSQL_DATABASE
+        value: rifa_premium
+    disk:
+      name: mysql-data
+      mountPath: /var/lib/mysql
+      sizeGB: 10
