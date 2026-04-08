@@ -1,0 +1,43 @@
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Configurações locais
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependências
+vendor/
+node_modules/
+
+# Uploads e arquivos temporários
+uploads/*
+!uploads/.gitkeep
+temp/
+cache/
+
+# Banco de dados local
+*.sql
+!database/*.sql
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+
+# ionCube - manter os arquivos codificados
+# Não ignorar os arquivos principais
+
+# Outros
+.cursor/
+.qodo/
+.autopilot.json

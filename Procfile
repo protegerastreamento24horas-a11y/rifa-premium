@@ -1,0 +1,1 @@
+web: apachectl -D FOREGROUND
